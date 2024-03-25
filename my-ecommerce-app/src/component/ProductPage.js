@@ -1,8 +1,8 @@
 import React, { createContext, useState, useEffect } from "react";
 import Header from "./Header.js";
 import Footer from "./Footer.js";
-import ProductList from "./ProductList";
-import Cart from "./Cart";
+import ProductList from "./productList";
+import Cart from "./cart";
 
 export const CartItemsContext = createContext(null);
 
