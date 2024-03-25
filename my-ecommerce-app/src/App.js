@@ -1,13 +1,13 @@
 import './App.css';
+import Homepage from './component/homepage.js';
 
 function App() {
   return (
     <Router>
         <Routes>
-            <Routes path='/'element={<Homepage />}>
+            <Route path='/' element={<Homepage />} />
         </Routes>
     </Router>
-
   )
 }
 
