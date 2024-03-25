@@ -1,8 +1,10 @@
 import React from 'react';
 
-function Header() {
+function Footer() {
     return (
-        <P>© Copyright, Ayodeji Fatokun and Jacelynn Doan</p>
+        <div>
+            <p>© Copyright, Ayodeji Fatokun and Jacelynn Doan </p>
+        </div>
         );
     }
     
