@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from "react";
 import Header from "./header.js";
-import Footer from "./footer.js";
+import Footer from "./Footer.js";
 import ProductList from "./ProductList";
 import Cart from "./Cart";
 

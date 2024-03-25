@@ -1,11 +1,11 @@
-import React from 'react';
+import React from "react";
 
 function Footer() {
-    return (
-        <div>
-            <p>© Copyright, Ayodeji Fatokun and Jacelynn Doan </p>
-        </div>
-        );
-    }
-    
+  return (
+    <footer>
+      <p>&copy; Copyright, Jacelynn Doan, Ayodeji Fatokun</p>
+    </footer>
+  );
+}
+
 export default Footer;

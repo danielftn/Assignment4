@@ -1,14 +1,16 @@
-import React from 'react';
-import Header from './Header'
+import React from "react";
+import Header from "./Header.js";
+import HomeMainSection from "./HomeMainSection.js";
+import Footer from "./Footer.js";
 
-const HomePage = () => {
-    return (
-        <div>
-            <Header />
-            <HomeMainSection />
-            <Footer />
-        </div>
-    );
-};
+function Homepage() {
+  return (
+    <div>
+      <Header />
+      <HomeMainSection />
+      <Footer />      
+    </div>
+  );
+}
 
-export default HomePage;
+export default Homepage;
