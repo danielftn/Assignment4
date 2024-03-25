@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import reviews from "../data/reviews.js";
 
 function HomeMainSection() {
-  const [selectedReviews, setSelectedReviews] = useState([]);
+  const [Reviews, setReviews] = useState([]);
 
   useEffect(() => {
     const randomReviews = [];
@@ -10,7 +10,7 @@ function HomeMainSection() {
       const randomIndex = Math.floor(Math.random() * reviews.length); 
       randomReviews.push(reviews[randomIndex]);
     }
-    setSelectedReviews(randomReviews); 
+    setReviews(randomReviews); 
   }, []);
 
   return (
@@ -33,7 +33,7 @@ function HomeMainSection() {
 
       {}
       <section class="customer-reviews">
-        {selectedReviews.map((review, index) => (
+        {Reviews.map((review, index) => (
           <div key={index} class="review">
             <h2>{review.customerName}</h2>
             <p>{review.reviewContent}</p>
