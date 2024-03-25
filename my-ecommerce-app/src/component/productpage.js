@@ -1,5 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
-import Header from "./header.js";
+import Header from "./Header.js";
 import Footer from "./Footer.js";
 import ProductList from "./ProductList";
 import Cart from "./Cart";
