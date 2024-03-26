@@ -4,14 +4,20 @@ import {Link} from 'react-router-dom';
 function Header() {
     return (
         <div>
-            <img src = {process.env.PUBLIC_URL + "images/logo.png"} 
-                    weight="100px" height="100px" alt="logo" />
-
-        <div className="navbar">
-                <Link to="/">Home</Link>
-                <Link to="/Productpage">Products</Link>
-                <a href="/">Login</a>
-            </div>
+            <header class="header">
+                <div class="logo">
+                    <img src={process.env.PUBLIC_URL + "images/logo.png"} height={"200px"} alt="Company Logo"></img>
+                    {}
+                </div>
+                <div class="company-name">
+                    Company Name
+                </div>
+            </header>
+            <nav>
+                <Link to ="./" class="nav-link">Home        </Link>
+                <Link to ="./ProductPage" class="nav-link">Products     </Link>
+                <Link to ="./" class="nav-link">Login       </Link>
+            </nav>
         </div>
     );
 }
