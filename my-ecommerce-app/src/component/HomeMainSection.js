@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import reviews from "../data/reviews.js";
+import reviews from "../data/Reviews.js";
 
 function HomeMainSection() {
   const [Reviews, setReviews] = useState([]);

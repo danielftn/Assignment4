@@ -1,6 +1,6 @@
 import React from "react";
-import ProductItem from "./productItem";
-import products from "../data/products";
+import ProductItem from "./ProductItem";
+import products from "../data/Products";
 
 function ProductList(props) {
   return (
