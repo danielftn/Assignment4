@@ -15,7 +15,7 @@ function Header() {
                 <nav style={{ display: 'flex', justifyContent: 'space-between' }}>  {/* inline style */}
                 <Link to ="/">Homepage</Link> {/*use Link to navigate to Homepage component*/}
                 <Link to ="/ProductPage">Products</Link>  {/* use Link to navigate to the ProductPage component */}
-                <Link to ="/">Login</Link>    {/* use Link to navigate to the Homepage component */}
+                <Link to ="/LoginPage">Login</Link>    {/* use Link to navigate to the Homepage component */}
             </nav>
         </div>
     );
