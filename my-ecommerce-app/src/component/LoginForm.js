@@ -22,14 +22,6 @@ function LoginForm() {
 
     const handleSwitch = () => {
         setLogin(!login);
-
-        if(login === true){
-            <LoginForm/>
-        }
-
-        if(login === false){
-            <SignupForm/>
-        }
     }
 
     return(
@@ -50,13 +42,13 @@ function LoginForm() {
             </div>
             
             <div className='loginButton'>
-                <input type='button' value={'Login'} onClick={handleLogin}/>
+                <button type='summit' value={'Login'} onClick={handleLogin}>Login</button>
             </div>
 
             <div className='switchtoSignup'>
-                <input type='button' 
-                value={'Switch to Signup'} 
-                onClick={handleSwitch}/>
+                {login ? null : <SignupForm />}
+                
+                <button type='button' onClick={handleSwitch}>Switch to Signup</button>
             </div>
         </form>
     );

@@ -6,6 +6,7 @@ function SignupForm(){
     const[password, setPassword] = useState('')
     const[confirmPassword, setConfirmPassword] = useState('')
     const[email, setEmail] = useState('')
+    const[login, setLogin] = useState(true);
 
     const handleSignup = () => {
         if('' === username){
@@ -18,7 +19,7 @@ function SignupForm(){
         }
 
         if(password !== confirmPassword){
-            alert('Please make passwords the same ')
+            alert('Please make password the same ')
         }
 
         if('' === email){
@@ -26,8 +27,15 @@ function SignupForm(){
         }
     }
 
+    const handleSwitch = () => {
+        setLogin(!login);
+        
+    }
+
+
     return(
     <form className='signupForm'>
+        <h1>Signup</h1>
         <div className='Username'>
             <p>Username: 
             <input placeholder='Enter your username' 
@@ -60,11 +68,12 @@ function SignupForm(){
         </div>
         
         <div className='signupButton'>
-            <input type='button' value={'Signup'} onClick={handleSignup}/>
+        <button type='summit' value={'Signu['} onClick={handleSignup}>Signup</button>
         </div>
 
         <div className='switchtoLogin'>
-            <input type='button' value={'Switch to Login'}/>
+            {login ? null : <LoginForm />}
+            <input type='button' value={'Switch to Login'} onClick={handleSwitch}/>
         </div>
     </form>
     );
