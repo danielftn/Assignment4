@@ -16,14 +16,17 @@ function SignupForm(){
 
         if('' === password) {
             alert('Please enter an password')
+            return
         }
 
         if(password !== confirmPassword){
             alert('Please make password the same ')
+            return
         }
 
         if('' === email){
             alert('Please enter an email')
+            return
         }
     }
 
