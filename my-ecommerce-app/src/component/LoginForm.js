@@ -6,7 +6,7 @@ function LoginForm() {
 
     const[username, setUsername] = useState('')
     const[password, setPassword] = useState('')
-    const[login, setLogin] = useState(true);
+    const[showLogin, setLogin] = useState(true);
 
     const handleLogin = () => {
         if('' === username){
@@ -21,36 +21,38 @@ function LoginForm() {
     }
 
     const handleSwitch = () => {
-        setLogin(!login);
+        setLogin(!showLogin);
     }
 
     return(
-        <form className='loginForm'>
-            <h1>Login</h1>
-            <div className='Username'>
-                <p>Username: <input placeholder='Enter your username' 
-                className='Username' 
-                type='text'
-                onChange={e => setUsername(e.target.value)} /></p>
-            </div>
-            
-            <div className='Password'>
-                <p>Password: <input placeholder='Enter your password' 
-                className='Password' 
-                type='password' 
-                onChange={e => setPassword(e.target.value)} /></p>
-            </div>
-            
-            <div className='loginButton'>
-                <button type='summit' value={'Login'} onClick={handleLogin}>Login</button>
-            </div>
-
-            <div className='switchtoSignup'>
-                {login ? null : <SignupForm />}
+        <div>
+        {showLogin ? (
+            <form className='loginForm'>
+                <h1>Login</h1>
+                <div className='Username'>
+                    <p>Username: <input placeholder='Enter your username' 
+                    className='Username' 
+                    type='text'
+                    onChange={e => setUsername(e.target.value)} /></p>
+                </div>
                 
-                <button type='button' onClick={handleSwitch}>Switch to Signup</button>
-            </div>
-        </form>
+                <div className='Password'>
+                    <p>Password: <input placeholder='Enter your password' 
+                    className='Password' 
+                    type='password' 
+                    onChange={e => setPassword(e.target.value)} /></p>
+                </div>
+                
+                <div className='loginButton'>
+                    <button type='summit' value={'Login'} onClick={handleLogin}>Login</button>
+                </div>
+
+                <div className='switchtoSignup'>             
+                    <button type='button' onClick={handleSwitch}>Switch to Signup</button>
+                </div>
+            </form>
+        ) :(<SignupForm />)}
+        </div>
     );
 }
 export default LoginForm;
