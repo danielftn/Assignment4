@@ -46,6 +46,7 @@ function SignupForm(){
                 <input placeholder='Enter your username' 
                 className='Username' 
                 type='text' 
+                required
                 onChange={e => setUsername(e.target.value)} /></p>
             </div>
             
@@ -54,6 +55,7 @@ function SignupForm(){
                 <input placeholder='Enter your password' 
                 className='Password' 
                 type='password' 
+                required
                 onChange={e => setPassword(e.target.value)}/></p>
             </div>
 
@@ -62,13 +64,15 @@ function SignupForm(){
                 <input placeholder='Confirm your password' 
                 className='confirmPassword' 
                 type='password' 
+                required
                 onChange={e => setConfirmPassword(e.target.value)}/></p>
             </div>
 
             <div className='email'>
                 <p>Email: <input placeholder='Enter your email' 
                 className='email' 
-                type='text' 
+                type='text'
+                required 
                 onChange={e => setEmail(e.target.value)}/></p>
             </div>
             

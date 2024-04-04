@@ -8,16 +8,24 @@ function LoginForm() {
     const[password, setPassword] = useState('')
     const[showLogin, setLogin] = useState(true);
 
-    const handleLogin = () => {
+    const handleLogin = (e) => {
         if('' === username){
-            alert('Please enter your username');
             return
         }
 
         if('' === password) {
-            alert('Please enter your password')
             return
         }
+
+        e.preventDefault();
+        const login = {username, password};
+        fetch("http://localhost:3000/LoginPage",{
+            method:"POST",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify(login)
+        }).then(() => {
+            console.log("data added")
+        })
     }
 
     const handleSwitch = () => {
@@ -33,6 +41,7 @@ function LoginForm() {
                     <p>Username: <input placeholder='Enter your username' 
                     className='Username' 
                     type='text'
+                    required
                     onChange={e => setUsername(e.target.value)} /></p>
                 </div>
                 
@@ -40,6 +49,7 @@ function LoginForm() {
                     <p>Password: <input placeholder='Enter your password' 
                     className='Password' 
                     type='password' 
+                    required
                     onChange={e => setPassword(e.target.value)} /></p>
                 </div>
                 
