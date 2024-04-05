@@ -8,25 +8,38 @@ function SignupForm(){
     const[email, setEmail] = useState('')
     const[showLogin, setLogin] = useState(false);
 
-    const handleSignup = () => {
-        if('' === username){
-            alert('Please enter an username');
+    const[message,setMessage] = useState('')
+    const[signUp, setSignedUp] = useState(false);
+
+    const handleSignup = (e) => {
+        if('' === username || '' === password || '' === email){
             return;
         }
 
-        if('' === password) {
-            alert('Please enter an password')
-            return
-        }
-
-        if(password !== confirmPassword){
+        else if(password !== confirmPassword){
             alert('Please make password the same ')
             return
         }
+        
+        else{
+        e.preventDefault();
+        fetch("http://localhost:5000/LoginPage",{
+            method:"POST",
+            headers:{"content-type":"application/json"},
+            body:JSON.stringify({'username' : username, 'password' : password, 'email' : email})
+        })
+        .then(response => response.json())
+        .then(response => {
+            if(response.signUp){
+                setMessage("Signup successful");
+                setSignedUp(false)
+            }
+            else{
+                setMessage("Signup failed. User alread exists")
+            }
 
-        if('' === email){
-            alert('Please enter an email')
-            return
+        })
+        .catch(error => setMessage("Sign failed."))    
         }
     }
 

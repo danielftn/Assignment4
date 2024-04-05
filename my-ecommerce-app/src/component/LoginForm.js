@@ -1,5 +1,7 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 import SignupForm from './SignupForm';
+
 
 
 function LoginForm() {
@@ -7,25 +9,33 @@ function LoginForm() {
     const[username, setUsername] = useState('')
     const[password, setPassword] = useState('')
     const[showLogin, setLogin] = useState(true);
+    const[message,setMessage] = useState('')
+    const[loggedIn, setLoggedIn] = useState(false);
 
     const handleLogin = (e) => {
-        if('' === username){
-            return
-        }
-
-        if('' === password) {
+        if('' === username || '' === password){
             return
         }
 
         e.preventDefault();
-        const login = {username, password};
-        fetch("http://localhost:3000/LoginPage",{
+        fetch("http://localhost:5000/LoginPage",{
             method:"POST",
             headers:{"content-type":"application/json"},
-            body:JSON.stringify(login)
-        }).then(() => {
-            console.log("data added")
+            body:JSON.stringify({'username' : username, 'password' : password})
         })
+        .then(response => response.json())
+        .then(response => {
+            if(response.loggedIn){
+                setLoggedIn(true);
+                setMessage("Authentication successful");
+            }
+            else{
+                setLoggedIn(false)
+                setMessage("Authentication failed. Incorrect username or password")
+            }
+
+        })
+        .catch(error => setMessage("Authentication failed. Incorrect username or password"))    
     }
 
     const handleSwitch = () => {
