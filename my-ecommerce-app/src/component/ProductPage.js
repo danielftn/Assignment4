@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Header from "./Header.js";
 import Footer from "./Footer.js";
 import ProductList from "./ProductList";
@@ -7,7 +8,17 @@ import Cart from "./Cart";
 
 export const CartItemsContext = createContext(null);
 
-function Productpage() { 
+function Productpage() {
+  
+  // const {loggedIn} = useContext(UserContext);
+  // const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (!loggedIn){
+  //     navigate('/Login');
+  //     return;
+  //   }
+
   const [cartItems, setCartItems] = useState([]); // cartItems is an array of objects
   const [priceTotal, setPriceTotal] = useState(0);  // priceTotal is a number
 

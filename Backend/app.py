@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify, send_from_directory
 import json
+from flask_cors import CORS
 import os
 
 app = Flask(__name__)
+CORS(app)
 
 products = [
  {
@@ -77,11 +79,48 @@ products = [
  }
 ]
 
-def load_users():
-    with open('users.json', 'r') as f:
-        users =json.load(f)
-        return users
 
-@app.route('/users', methods=['POST'])
-def add_signup():
-    new_signup = users.json
+with open('users.json', 'r') as f:
+   users =json.load(f)
+
+@app.route('/LoginPage', methods=['POST'])
+def authenticateUser():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+
+    for user in users:
+        if(user['username'] == username and user['password'] == password):
+            return jsonify({'loggedIn' : True, 'message': 'Login successful'})
+        return jsonify({'loggedIn' : False, 'message': 'Invalid username and password'})
+    
+@app.route('/Signup', methods=['POST'])
+def signUp():
+    data = request.get_json()
+    if not data or 'username' not in data or 'password' not in data or 'email' not in data:
+        return jsonify({'signUp': False, 'message': 'Invalid request format'})
+
+    username = data['username']
+    password = data['password']
+    email = data['email']
+
+    for user in users:
+        if user['username'] == username:
+            return jsonify({'signUp': False, 'message': 'User already exists'})
+
+    new_user = {'id': len(users) + 1, 'username': username, 'password': password, 'email': email}
+    users.append(new_user)
+
+    with open('users.json', 'w') as f:
+        json.dump(users, f)
+
+    return jsonify({'signUp': True, 'message': 'New user created'})
+
+    
+@app.route('/ProductPage', methods=['GET'])
+def getProducts():
+    return jsonify(products)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
