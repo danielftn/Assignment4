@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
 import SignupForm from './SignupForm';
 
 
@@ -70,6 +69,7 @@ function LoginForm() {
                 <div className='switchtoSignup'>             
                     <button type='button' onClick={handleSwitch}>Switch to Signup</button>
                 </div>
+                {message && <p>{message}</p>}
             </form>
         ) :(<SignupForm />)}
         </div>

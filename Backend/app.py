@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify
 import json
 from flask_cors import CORS
 import os
@@ -81,7 +81,7 @@ products = [
 
 
 with open('users.json', 'r') as f:
-   users =json.load(f)
+   users = json.load(f)
 
 @app.route('/LoginPage', methods=['POST'])
 def authenticateUser():
@@ -92,7 +92,7 @@ def authenticateUser():
     for user in users:
         if(user['username'] == username and user['password'] == password):
             return jsonify({'loggedIn' : True, 'message': 'Login successful'})
-        return jsonify({'loggedIn' : False, 'message': 'Invalid username and password'})
+    return jsonify({'loggedIn' : False, 'message': 'Invalid username and password'})
     
 @app.route('/Signup', methods=['POST'])
 def signUp():
