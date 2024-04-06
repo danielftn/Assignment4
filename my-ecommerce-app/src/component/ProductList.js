@@ -6,7 +6,7 @@ function ProductList(props) { // props is passed from the parent component
 
   useEffect(() => {
     fetch("http://localhost:5000/ProductPage")
-    .then((Response) => Response.json)
+    .then((Response) => Response.json())
     .then((data) => { setProdcuts(data)
   })},[])
 
