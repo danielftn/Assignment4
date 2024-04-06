@@ -23,7 +23,7 @@ function SignupForm(){
         
         else{
         e.preventDefault();
-        fetch("http://localhost:5000/LoginPage",{
+        fetch("http://localhost:5000/Signup",{
             method:"POST",
             headers:{"content-type":"application/json"},
             body:JSON.stringify({'username' : username, 'password' : password, 'email' : email})
@@ -96,6 +96,7 @@ function SignupForm(){
             <div className='switchtoLogin'>
                 <input type='button' value={'Switch to Login'} onClick={handleSwitch}/>
             </div>
+            {message && <p>{message}</p>}
         </form>
     )}
         </div>
