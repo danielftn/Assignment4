@@ -1,15 +1,13 @@
 import React, {useState} from 'react';
 import SignupForm from './SignupForm';
 
-
-
 function LoginForm() {
-
     const[username, setUsername] = useState('')
     const[password, setPassword] = useState('')
     const[showLogin, setLogin] = useState(true);
     const[message,setMessage] = useState('')
     const[loggedIn, setLoggedIn] = useState(false);
+    
 
     const handleLogin = (e) => {
         if('' === username || '' === password){
