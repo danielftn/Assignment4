@@ -13,7 +13,6 @@ function LoginForm({onLoginSuccess}) {
         if('' === username || '' === password){
             return
         }
-
         e.preventDefault();
         fetch("http://localhost:5000/LoginPage",{
             method:"POST",
@@ -25,7 +24,7 @@ function LoginForm({onLoginSuccess}) {
             if(response.loggedIn){
                 setLoggedIn(true);
                 setMessage("Authentication successful");
-                onLoginSuccess();
+                onLoginSuccess(true);
             }
             else{
                 setLoggedIn(false)
@@ -33,7 +32,7 @@ function LoginForm({onLoginSuccess}) {
             }
 
         })
-        .catch(error => setMessage("Authentication failed. Incorrect username or password"))    
+        .catch(error => setMessage("Error: Authentication failed."))    
     }
 
     const handleSwitch = () => {
