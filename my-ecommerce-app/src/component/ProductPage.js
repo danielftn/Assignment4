@@ -64,7 +64,7 @@ function Productpage() {
   };
 
   const handleLoginSuccess = () => {
-    setLogin(false); // Update showLogin state to false
+    setLogin(false);
   };
 
   return (

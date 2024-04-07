@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import SignupForm from './SignupForm';
 
-function LoginForm({ onLoginSuccess }) {
+function LoginForm({onLoginSuccess}) {
     const[username, setUsername] = useState('')
     const[password, setPassword] = useState('')
     const[showLogin, setLogin] = useState(true);
