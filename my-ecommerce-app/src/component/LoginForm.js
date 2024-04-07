@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import SignupForm from './SignupForm';
 
-function LoginForm() {
+function LoginForm({ onLoginSuccess }) {
     const[username, setUsername] = useState('')
     const[password, setPassword] = useState('')
     const[showLogin, setLogin] = useState(true);
@@ -25,6 +25,7 @@ function LoginForm() {
             if(response.loggedIn){
                 setLoggedIn(true);
                 setMessage("Authentication successful");
+                onLoginSuccess();
             }
             else{
                 setLoggedIn(false)

@@ -1,28 +1,20 @@
 import React, { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import Header from "./Header.js";
 import Footer from "./Footer.js";
 import ProductList from "./ProductList";
 import Cart from "./Cart";
-
+import LoginForm from "./LoginForm.js";
 
 export const CartItemsContext = createContext(null);
 
-function Productpage() {
-  
-  // const {loggedIn} = useContext(UserContext);
-  // const navigate = useNavigate();
-
-  // useEffect(() => {
-  //   if (!loggedIn){
-  //     navigate('/Login');
-  //     return;
-  //   }
-
+function Productpage() { 
   const [cartItems, setCartItems] = useState([]); // cartItems is an array of objects
   const [priceTotal, setPriceTotal] = useState(0);  // priceTotal is a number
+  const[showLogin, setLogin] = useState(true);
 
   useEffect(() => { // get the cart items and total price from local storage
+
+
     const itemsInLocal = JSON.parse(localStorage.getItem("cartItems") || "[]");
     setCartItems(itemsInLocal);
 
@@ -71,9 +63,14 @@ function Productpage() {
     localStorage.setItem("cartItems", JSON.stringify(cartItems)); // update the local storage
   };
 
+  const handleLoginSuccess = () => {
+    setLogin(false); // Update showLogin state to false
+  };
+
   return (
     <div className="product-page">
       <Header />
+      {showLogin ? (<LoginForm onLoginSuccess={handleLoginSuccess}/>) : (
       <table style={{ width: "100%" }}>
         <tr>
           <td style={{ verticalAlign: "top" }}>
@@ -88,6 +85,7 @@ function Productpage() {
           </td>
         </tr>
       </table>
+      )}
       <Footer />
     </div>
   );
