@@ -24,6 +24,7 @@ function LoginForm({onLoginSuccess}) {
             if(response.loggedIn){
                 setLoggedIn(true);
                 setMessage("Authentication successful");
+                console.log("Authentication successful")
                 onLoginSuccess(true);
             }
             else{
