@@ -10,6 +10,7 @@ function LoginForm({onLoginSuccess}) {
     const[message,setMessage] = useState('')
     const[loggedIn, setLoggedIn] = useState(false);
     const location = useLocation();
+    const navigate = useNavigate();
     
 
     const handleLogin = (e) => {
@@ -27,6 +28,7 @@ function LoginForm({onLoginSuccess}) {
             if(response.loggedIn && location.pathname === '/LoginPage'){
                 setLoggedIn(true);
                 setMessage("Authentication successful");
+                navigate('/ProductPage')
             }
             else if(response.loggedIn){
                 setLoggedIn(true);
