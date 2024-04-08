@@ -1,5 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import SignupForm from './SignupForm';
+import { useLocation } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function LoginForm({onLoginSuccess}) {
     const[username, setUsername] = useState('')
@@ -7,6 +9,7 @@ function LoginForm({onLoginSuccess}) {
     const[showLogin, setLogin] = useState(true);
     const[message,setMessage] = useState('')
     const[loggedIn, setLoggedIn] = useState(false);
+    const location = useLocation();
     
 
     const handleLogin = (e) => {
@@ -21,10 +24,13 @@ function LoginForm({onLoginSuccess}) {
         })
         .then(response => response.json())
         .then(response => {
-            if(response.loggedIn){
+            if(response.loggedIn && location.pathname === '/LoginPage'){
                 setLoggedIn(true);
                 setMessage("Authentication successful");
-                console.log("Authentication successful")
+            }
+            else if(response.loggedIn){
+                setLoggedIn(true);
+                setMessage("Authentication successful");
                 onLoginSuccess(true);
             }
             else{
